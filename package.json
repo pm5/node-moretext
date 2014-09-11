@@ -1,6 +1,6 @@
 {
   "name": "moretext",
-  "version": "0.0.0",
+  "version": "0.0.1",
   "description": "Node.js module for <http://more.handlino.com>",
   "main": "moretext.js",
   "directories": {
@@ -9,10 +9,14 @@
   "scripts": {
     "test": "mocha"
   },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/pm5/node-moretext.git"
+  },
   "keywords": [
     "test"
   ],
-  "author": "Pomin Wu <pomin5@gmail.com> (pm5)",
+  "author": "Pomin Wu (pm5) <pomin5@gmail.com>",
   "license": "MIT",
   "devDependencies": {
     "mocha": "~1.21.4",
