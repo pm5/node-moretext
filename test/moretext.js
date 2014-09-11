@@ -10,4 +10,12 @@ describe('Moretext', function () {
       done();
     });
   });
+
+  it('could set number of sentences', function (done) {
+    moretext({n: 10}, function (error, lines) {
+      expect(lines.length).to.equal(10);
+      expect(lines[0]).to.be.a('string');
+      done();
+    });
+  });
 });

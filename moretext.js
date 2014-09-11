@@ -3,10 +3,22 @@
 var request = require('request');
 var moretext_url = 'http://more.handlino.com/sentences.json';
 
-function moretext(done) {
-  request(moretext_url, function (error, response, body) {
+function moretext(arg1, arg2) {
+  var url, done;
+  if (arg2 === undefined) {
+    url = moretext_url;
+    done = arg1;
+  } else {
+    url = moretext_url + '?n=' + arg1.n;
+    done = arg2;
+  }
+  request(url, function (error, response, body) {
     body = JSON.parse(body);
-    done(null, body.sentences[0]);
+    if (arg2 === undefined) {
+      done(null, body.sentences[0]);
+    } else {
+      done(null, body.sentences);
+    }
   });
 }
 
