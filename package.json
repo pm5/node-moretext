@@ -1,5 +1,5 @@
 {
-  "name": "node-moretext",
+  "name": "moretext",
   "version": "0.0.0",
   "description": "Node.js module for <http://more.handlino.com>",
   "main": "moretext.js",
