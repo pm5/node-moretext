@@ -1,5 +1,7 @@
 
-Node.js module for <http://more.handlino.com>
-=============================================
+node-moretext
+=============
 
-See <http://more.handlino.com/api> for the API.
+Get dummy Chinese text (lorem ipsum) with Handlino serivce.
+
+See <http://more.handlino.com/api> for the Handlino API.
