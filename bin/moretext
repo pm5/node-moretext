@@ -1,0 +1,20 @@
+#!/bin/sh
+
+':' //; exec "`command -v node || command -v nodejs`" "$0" "$@"
+
+'use strict'
+
+var argv = require('minimist')(process.argv.slice(2));
+var moretext = require('moretext');
+
+if (argv.n) {
+  moretext(argv, function (err, lines) {
+    if (err) { throw err; }
+    lines.forEach(function (l) { process.stdout.write(l + "\n"); });
+  });
+} else {
+  moretext(argv, function (err, line) {
+    if (err) { throw err; }
+    process.stdout.write(line + "\n");
+  });
+}

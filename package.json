@@ -1,10 +1,14 @@
 {
   "name": "moretext",
-  "version": "0.0.2",
-  "description": "Node.js module for <http://more.handlino.com>",
+  "version": "0.0.3",
+  "description": "Get dummy Chinese text (lorem ipsum) with Handlino serivce.",
   "main": "moretext.js",
   "directories": {
+    "bin": "bin",
     "test": "test"
+  },
+  "bin": {
+    "moretext": "./bin/moretext"
   },
   "scripts": {
     "test": "mocha"
@@ -13,8 +17,15 @@
     "type": "git",
     "url": "https://github.com/pm5/node-moretext.git"
   },
+  "bugs": {
+    "url": "https://github.com/pm5/node-moretext/issues"
+  },
   "keywords": [
-    "test"
+    "test",
+    "lorem",
+    "ipsum",
+    "placeholder",
+    "cli"
   ],
   "author": "Pomin Wu (pm5) <pomin5@gmail.com>",
   "license": "MIT",
@@ -23,6 +34,7 @@
     "chai": "~1.9.1"
   },
   "dependencies": {
+    "minimist": "^1.1.0",
     "request": "~2.42.0"
   }
 }
