@@ -4,13 +4,12 @@ var request = require('request');
 var moretext_url = 'http://more.handlino.com/sentences.json';
 
 function moretext(arg1, arg2) {
-  var url, done, param;
+  var url = moretext_url;
+  var done = arg2;
   if (typeof arg1 === 'function') {
-    url = moretext_url;
     done = arg1;
-  } else {
-    url = moretext_url;
-    param = [];
+  } else if (typeof arg2 === 'function') {
+    var param = [];
     if (arg1.n) param.push('n=' + arg1.n);
     if (arg1.limit) {
       if (typeof arg1.limit === 'number') {
@@ -19,8 +18,10 @@ function moretext(arg1, arg2) {
         param.push('limit=' + arg1.limit[0] + ',' + arg1.limit[1]);
       }
     }
-    url = moretext_url + '?' + param.join('&');
+    url += '?' + param.join('&');
     done = arg2;
+  } else if (arg2 === undefined) {
+    return request(url);
   }
   request(url, function (error, response, body) {
     body = JSON.parse(body);

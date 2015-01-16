@@ -3,7 +3,7 @@
 var expect = require('chai').expect;
 var moretext = require('../moretext');
 
-describe('Moretext', function () {
+describe('Moretext interface', function () {
   it('should get dummy sentences using more.handlino.com', function (done) {
     moretext(function (error, text) {
       expect(text.length).to.be.above(0);
