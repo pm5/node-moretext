@@ -12,7 +12,7 @@ Usage
 Command-line tool:
 ```
 $ moretext
-$ moretext -n 10 --limit 30
+$ moretext -n 11 --limit 29
 ```
 
 Use as a library:
@@ -25,9 +25,15 @@ moretext(function (err, text) {
   // do something with the text...
 });
 
-moretext({n:10, limit:30}, function (err, lines) {
-  // lines is an array of 10 strings, each no more than 30 characaters
+moretext({n:13, limit:[23, 29]}, function (err, lines) {
+  // lines is an array of 13 strings, each between 23 and 29 characaters
 });
+```
+
+Stream interface:
+
+```
+moretext({n:43, limit: 7}).pipe(process.stdout);
 ```
 
 See <http://more.handlino.com/api> for the Handlino API.
