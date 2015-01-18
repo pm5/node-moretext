@@ -1,22 +1,47 @@
 'use strict'
 
 var expect = require('chai').expect;
-var moretext = require('moretext');
-var concat = require('concat-stream');
+var moretext = require('../moretext');
 
 describe('Stream interface', function () {
-  it('should create a readable stream', function (done) {
-    moretext().pipe(concat(function (body) {
-      expect(body.length).to.be.above(0);
+  it('should create a readable stream of strings', function (done) {
+    var m = moretext();
+    m.on('readable', function () {
+      var chunk = m.read();
+      if (chunk === null) return;
+      expect(chunk.length).to.be.above(0);
+      expect(typeof chunk).to.eql('string');
+    });
+    m.on('end', function () {
       done();
-    }));
+    });
   });
 
-  it('should read a single string from the stream', function (done) {
-    moretext().pipe(concat(function (body) {
-      body = body.toString('utf-8');
-      expect(typeof body).to.eql('string');
+  it('should read a multiple strings from the stream', function (done) {
+    var times = 0, n = 10;
+    var m = moretext({n:n});
+    m.on('readable', function () {
+      var chunk = m.read();
+      if (chunk === null) return;
+      times++;
+    });
+    m.on('end', function () {
+      expect(times).to.eql(10);
       done();
-    }));
+    });
+  });
+
+  it('should read strings within certain length limits', function (done) {
+    var limit = [90, 120];
+    var m = moretext({limit:limit});
+    m.on('readable', function () {
+      var chunk = m.read();
+      if (chunk === null) return;
+      expect(chunk.length).to.be.above(limit[0]);
+      expect(chunk.length).to.be.below(limit[1]);
+    });
+    m.on('end', function () {
+      done();
+    });
   });
 });
