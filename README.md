@@ -37,3 +37,8 @@ moretext({n:43, limit: 7}).pipe(process.stdout);
 ```
 
 See <http://more.handlino.com/api> for the Handlino API.
+
+License
+-------
+
+[MIT License](http://pm5.mit-license.org/)
